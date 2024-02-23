@@ -43,7 +43,7 @@ async fn main() {
         .await
         .unwrap();
 
-    // Connect to the Server via TCP. This is the TLS client socket.
+        
     let client_socket = tokio::net::TcpStream::connect((SERVER_DOMAIN, 443))
         .await
         .unwrap();
@@ -98,7 +98,7 @@ async fn main() {
     let prover = prover.start_notarize();
 
     // Build proof (with or without redactions)
-    let redact = false;
+    let redact = true;
     let proof = if !redact {
         build_proof_without_redactions(prover).await
     } else {

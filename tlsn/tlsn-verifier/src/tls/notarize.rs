@@ -43,6 +43,7 @@ impl Verifier<Notarize> {
 
             let merkle_root =
                 expect_msg_or_err!(notarize_channel, TlsnMessage::TranscriptCommitmentRoot)?;
+            println!("FJAAK finalize: merkle_root: {:?}", merkle_root);
 
             // Finalize all MPC before signing the session header
             let (mut ot_sender_actor, _, _) = futures::try_join!(

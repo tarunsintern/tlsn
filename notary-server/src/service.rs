@@ -15,6 +15,7 @@ use tlsn_verifier::tls::{Verifier, VerifierConfig};
 use tokio::io::{AsyncRead, AsyncWrite};
 use tokio_util::compat::TokioAsyncReadCompatExt;
 use tracing::{debug, error, info, trace};
+use tracing_subscriber::field::debug;
 use uuid::Uuid;
 
 use crate::{
@@ -161,6 +162,8 @@ pub async fn notary_service<T: AsyncWrite + AsyncRead + Send + Unpin + 'static>(
     debug!(?session_id, "Starting notarization...");
 
     let mut config_builder = VerifierConfig::builder();
+
+    debug!(?session_id, "Configuring notarization...");
 
     config_builder = config_builder.id(session_id);
 

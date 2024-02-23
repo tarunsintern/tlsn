@@ -199,6 +199,7 @@ impl Verifier<state::Closed> {
     /// If the verifier is a Notary, this function will transition the verifier to the next state
     /// where it can sign the prover's commitments to the transcript.
     pub fn start_notarize(self) -> Verifier<Notarize> {
+        println!("FJAAK tlsn_start_notarize");
         Verifier {
             config: self.config,
             state: self.state.into(),
